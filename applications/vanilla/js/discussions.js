@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-   
+
    // Show drafts delete button on hover
    $('li.Item').livequery(function() {
       var btn = $(this).find('a.Delete');
@@ -19,10 +19,10 @@ jQuery(document).ready(function($) {
             afterPageLoaded: function() { $(document).trigger('DiscussionPagingComplete'); }
          });
       });
-      
+
    if ($('.AdminCheck :checkbox').not(':checked').length == 1)
       $('.AdminCheck [name="Toggle"]').attr('checked', 'checked').change();
-      
+
    // Set up sorting
    $(document).undelegate('.SortDiscussions', 'click');
    $(document).delegate('.SortDiscussions', 'click', function() {
@@ -39,7 +39,7 @@ jQuery(document).ready(function($) {
             location.reload();
          }
       });
-      
+
       return false;
    });
 
@@ -56,7 +56,16 @@ jQuery(document).ready(function($) {
       var aCheckIDs = new Array();
       checkIDs.each(function() {
          checkID = $(this);
-         aCheckIDs[aCheckIDs.length] = { 'checkId' : checkID.val() , 'checked' : checkID.attr('checked') };
+
+         // jQuery 1.9 removed the old behaviour of checkID.attr('checked') when
+         // checking for boolean checked value. It now returns undefined. The
+         // correct method to check boolean checked is with checkID.prop('checked');
+         // Vanilla would either return the string 'checked' or '', so make
+         // sure same return values are generated.
+         aCheckIDs[aCheckIDs.length] = {
+            'checkId' : checkID.val(),
+            'checked' : checkID.prop('checked') || '' // originally just, wrong: checkID.attr('checked')
+         };
       });
       $.ajax({
          type: "POST",
