@@ -73,12 +73,12 @@ jQuery(document).ready(function($) {
           checkbox = $(rows[i]).find('td:eq(' + (columnIndex) + ') :checkbox');
           if ($(checkbox).is(':checkbox')) {
             if (state == -1)
-               state = $(checkbox).attr('checked');
+               state = $(checkbox).prop('checked');
 
             if (state) {
-              checkbox.removeAttr('checked');
+              checkbox.prop('checked', false);
             } else {
-              checkbox.attr('checked', 'checked');
+              checkbox.prop('checked', true);
             }
           }
         }
@@ -96,12 +96,12 @@ jQuery(document).ready(function($) {
          var state = false;
          for (i = 0; i < checkboxes.length; i++) {
             if (i == 0)
-               state = $(checkboxes[0]).attr('checked');
+               state = $(checkboxes[0]).prop('checked');
 
             if (state)
-               $(checkboxes[i]).removeAttr('checked');
+               $(checkboxes[i]).prop('checked', false);
             else
-               $(checkboxes[i]).attr('checked', 'checked');
+               $(checkboxes[i]).prop('checked', true);
          }
          return false;
       }

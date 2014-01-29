@@ -21,7 +21,7 @@ jQuery(document).ready(function($) {
       });
 
    if ($('.AdminCheck :checkbox').not(':checked').length == 1)
-      $('.AdminCheck [name="Toggle"]').attr('checked', 'checked').change();
+      $('.AdminCheck [name="Toggle"]').prop('checked', true).change();
 
    // Set up sorting
    $(document).undelegate('.SortDiscussions', 'click');
@@ -45,10 +45,10 @@ jQuery(document).ready(function($) {
 
    /* Discussion Checkboxes */
    $('.AdminCheck [name="Toggle"]').click(function() {
-      if ($(this).attr('checked'))
-         $('.DataList .AdminCheck :checkbox, tbody .AdminCheck :checkbox').attr('checked', 'checked').change();
+      if ($(this).prop('checked'))
+         $('.DataList .AdminCheck :checkbox, tbody .AdminCheck :checkbox').prop('checked', true).change();
       else
-         $('.DataList .AdminCheck :checkbox, tbody .AdminCheck :checkbox').removeAttr('checked').change();
+         $('.DataList .AdminCheck :checkbox, tbody .AdminCheck :checkbox').prop('checked', false).change();
    });
    $('.AdminCheck :checkbox').click(function() {
       // retrieve all checked ids

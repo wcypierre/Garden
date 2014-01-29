@@ -277,9 +277,9 @@ jQuery(document).ready(function($) {
    $(document).delegate(".PopupWindow", 'click', function() {
       var $this = $(this);
 
-      /*if ($this.hasClass('NoMSIE') && $.browser.misie) {
+      if ($this.hasClass('NoMSIE') && /msie/.test(navigator.userAgent.toLowerCase())) {
          return;
-      }*/
+      }
 
       var width = $this.attr('popupWidth');width = width ? width : 960;
       var height = $this.attr('popupHeight');height = height ? height : 600;
@@ -1118,9 +1118,9 @@ jQuery(document).ready(function($) {
       return Math.min.apply({},this)
    }
 
-   /*if ($.browser.msie) {
+   if (/msie/.test(navigator.userAgent.toLowerCase())) {
       $('body').addClass('MSIE');
-   }*/
+   }
 
    var d = new Date()
    var hourOffset = -Math.round(d.getTimezoneOffset() / 60);
@@ -1143,7 +1143,7 @@ jQuery(document).ready(function($) {
    // Add "checked" class to item rows if checkboxes are checked within.
    checkItems = function() {
       var container = $(this).parents('.Item');
-      if ($(this).attr('checked') == 'checked')
+      if ($(this).prop('checked'))
          $(container).addClass('Checked');
       else
          $(container).removeClass('Checked');

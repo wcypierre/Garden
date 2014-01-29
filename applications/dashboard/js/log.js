@@ -69,7 +69,7 @@ jQuery(document).ready(function($) {
       e.stopPropagation();
       var $checkbox = $(this);
 
-      var selected = $checkbox.attr('checked') == 'checked';
+      var selected = $checkbox.prop('checked');
       if (flip)
          selected = !selected;
 
@@ -81,17 +81,17 @@ jQuery(document).ready(function($) {
 
    $(document).on('click', '#SelectAll', function(e, flip) {
       e.stopPropagation();
-      var selected = $(this).attr('checked') == 'checked';
+      var selected = $(this).prop('checked');
 
       if (flip)
          selected = !selected;
 
       var table = $(this).closest('table').find('tbody');
-      $('input:checkbox', table).attr('checked', selected);
+      $('input:checkbox', table).prop('checked', selected);
       if (selected)
-         $('tr', table).addClass('Selected', selected);
+         $('tr', table).addClass('Selected');
       else
-         $('tr', table).removeClass('Selected', selected);
+         $('tr', table).removeClass('Selected');
    });
 
    $('.RestoreButton').click(function(e) {
@@ -169,8 +169,8 @@ jQuery(document).ready(function($) {
    });
 
    $(document).delegate('#Confirm_SelectAll', 'click', function() {
-      var checked = $('#Confirm_SelectAll').attr('checked') == 'checked';
-      $('#ConfirmForm input:checkbox').attr('checked', checked);
+      var checked = $('#Confirm_SelectAll').prop('checked');
+      $('#ConfirmForm input:checkbox').prop('checked', checked);
    });
 
    // Filter menu
