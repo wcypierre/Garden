@@ -10,6 +10,7 @@ $PluginInfo['ThankfulPeople'] = array(
         'RequiredApplications' => array('Vanilla' => '>=2.1b1'),
         'RequiredTheme' => False,
         'RequiredPlugins' => False,
+        'MobileFriendly' => TRUE,
         'License' => 'X.Net License'
 );
 
