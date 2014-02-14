@@ -35,7 +35,14 @@
       <div class="Head" id="Head">
          <div class="Row">
             <strong class="SiteTitle"><a href="{link path="/"}">{logo}</a></strong>
-            <div class="SiteSearch">{searchbox}</div>
+            <div class="SiteSearch">
+		<form action="search.php" method="POST" />
+			<input type="radio" name="type" value="post" /> Post only
+			<input type="radio" name="type" value="title" /> Title only
+			<input id="Form_Search" class="InputBox" name="search" placeholder="Search" />
+			<input id="Form_Go" class="Button" type="submit" value="Go" />
+		</form>
+	    </div>
             <ul class="SiteMenu">
                <!-- {dashboard_link} -->
                {discussions_link}
